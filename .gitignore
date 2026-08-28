@@ -1,0 +1,11 @@
+
+
+# Şifreleri ve özel anahtarları içeren dosya (Asla GitHub'a yüklenmez)
+.env
+
+# Sanal ortam kütüphane klasörü (GitHub'a yüklenmez)
+venv/
+
+# Python önbellek dosyaları (Gereksiz sistem dosyaları)
+__pycache__/
+*.pyc

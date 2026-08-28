@@ -1,0 +1,42 @@
+
+#Ne İşe Yarar: GitHub'a "Her gün saat 18:00'de sanal bir bilgisayar aç,
+#Python kur, gizli şifreleri yükle ve main.py dosyamı çalıştır" talimatını verir.
+
+name: Gunluk Teknoloji Bulteni Otomasyonu
+
+# Otomasyonun tetiklenme zaman ayarları
+on:
+  schedule:
+    # CRON Zamanlaması: Her gün UTC 15:00 (Türkiye saati ile TSİ 18:00 yapmaktadır)
+    - cron: '0 15 * * *'
+  workflow_dispatch: # İstenildiği an GitHub sitesinden elle de çalıştırılabilmesini sağlar
+
+jobs:
+  run-newsletter:
+    runs-on: ubuntu-latest # İşlemin çalışacağı ücretsiz Linux bulut sunucusu
+
+    steps:
+      # 1. Adım: GitHub deposundaki kodları sunucuya indirir
+      - name: Kodları Çek
+        uses: actions/checkout@v4
+
+      # 2. Adım: Bulut sunucuya Python kurar
+      - name: Python Ortamını Kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. Adım: Gerekli kütüphaneleri yükler
+      - name: Bağımlılıkları Yükle
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Adım: Ana kodumuzu çalıştırır ve şifreleri GitHub Secrets'tan güvenle çeker
+      - name: Bulten Kodunu Calistir
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        run: python main.py
