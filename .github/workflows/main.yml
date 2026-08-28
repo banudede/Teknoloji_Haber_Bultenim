@@ -1,0 +1,33 @@
+
+#Bu dosyanın amacı; Github Actions'a projemizi bulutta nasıl çalıştıracağını tarif eden bir talimat dosyası
+#hazırlamak.
+name: Daily News Automation   # Otomasyonun GitHub üzerindeki ismi
+
+on:
+  schedule:
+    - cron: '0 15 * * *'       # ZAMANLAYICI: Her gün UTC 15:00'te (TSİ 18:00) otomatik tetikler
+  workflow_dispatch:           # MANUEL TETİKLEME: İstediğin an GitHub'dan tek tıkla çalıştırabilmeni sağlar
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest     # SANAL SUNUCU: Bulutta geçici bir Linux (Ubuntu) bilgisayarı açar
+
+    steps:
+      - uses: actions/checkout@v4   # KODLARI ÇEKME: Projedeki tüm dosyalarını sanal bilgisayara indirir
+
+      - name: Python Ortamını Kur   # PYTHON KURULUMU: Sanal bilgisayara Python 3.10 sürümünü yükler
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Bağımlılıkları Yükle # KÜTÜPHANE KURULUMU: requirements.txt içindeki paketleri yükler
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Otomasyonu Çalıştır   # KODU ÇALIŞTIRMA: Gizli şifreleri tanımlar ve main.py dosyasını başlatır
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        run: python main.py

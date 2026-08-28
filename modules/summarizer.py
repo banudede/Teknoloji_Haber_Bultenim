@@ -33,11 +33,12 @@ akademik bir titizlikte, sade, son derece anlaşılır Türkçe bir e-posta bül
 
 Şu kurallara KESİNLİKLE uy:
 1. Çıktı SADECE geçerli bir HTML kütüphanesi/gövdesi olmalı. ```html veya başka açıklama metinleri EKLEME.
-2. Her haber için şık bir kart tasarımı oluştur.
-3. Paragraflar arasında göz yormayan, ferah boşluklar (padding/margin) bırak.
-4. Başlıklar net ve dikkat çekici Türkçe başlıklar olsun. Ana başlık "Teknoloji Haber Bültenim" olacak. Başka ana başlık uydurma.
-5. Her haberin altında kaynağın adı ve orijinal habere giden şık bir tıklanabilir link (Devamını Oku) bulunsun.
-6. Tasarımda modern ve temiz renkler (koyu mavi, gri, beyaz tonları) kullan.
+2. Bültenin en üstünde (Header) ana başlık olarak SADECE "Teknoloji Haber Bültenim" yaz. Bu ana başlığın altına veya üstüne KESİNLİKLE rastgele slogan, alt başlık veya ekstra açıklama ekleme.
+3. Her haber için şık bir kart tasarımı oluştur.
+4. Paragraflar arasında göz yormayan, ferah boşluklar (padding/margin) bırak.
+5. Haberlerin kendi orijinal başlıklarını net ve dikkat çekici Türkçe başlıklar olarak koru.
+6. Her haberin altında kaynağın adı ve orijinal habere giden şık bir tıklanabilir link (Devamını Oku) bulunsun.
+7. Tasarımda modern ve temiz renkler (koyu mavi, gri, beyaz tonları) kullan.
 
 Sana verilen haber verileri:
 """
