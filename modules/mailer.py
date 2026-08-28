@@ -11,7 +11,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=False)
 
 def send_newsletter(html_content):
     sender_email = os.getenv("SENDER_EMAIL")

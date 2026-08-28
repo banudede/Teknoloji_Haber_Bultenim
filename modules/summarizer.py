@@ -14,7 +14,7 @@ from dotenv import load_dotenv  # .env dosyasındaki gizli şifreleri okuma pake
 from google import genai       # Google Gemini yapay zeka kütüphanesi
 
 # .env dosyasındaki API anahtarını hafızaya yüklüyoruz
-load_dotenv()
+load_dotenv(override=False)
 
 # Gemini istemcisini (AI bağlantısını) API anahtarımızla başlatıyoruz
 gemini_client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
