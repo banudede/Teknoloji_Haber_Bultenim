@@ -1,14 +1,13 @@
-
-#Ne İşe Yarar: GitHub'a "Her gün saat 18:00'de sanal bir bilgisayar aç,
-#Python kur, gizli şifreleri yükle ve main.py dosyamı çalıştır" talimatını verir.
+# Ne İşe Yarar: GitHub'a "Her gün saat 18:05'te sanal bir bilgisayar aç,
+# Python kur, gizli şifreleri yükle ve main.py dosyamı çalıştır" talimatını verir.
 
 name: Gunluk Teknoloji Bulteni Otomasyonu
 
 # Otomasyonun tetiklenme zaman ayarları
 on:
   schedule:
-    # CRON Zamanlaması: Her gün UTC 15:00 (Türkiye saati ile TSİ 18:00 yapmaktadır)
-    - cron: '0 15 * * *'
+    # CRON Zamanlaması: Her gün UTC 15:05 (Türkiye saati ile TSİ 18:05)
+    - cron: '5 15 * * *'
   workflow_dispatch: # İstenildiği an GitHub sitesinden elle de çalıştırılabilmesini sağlar
 
 jobs:
